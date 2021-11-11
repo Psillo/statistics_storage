@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+
+    statistics.storage:
+        build:
+            context: .
+        command: sh -c "python manage.py collectstatic --no-input && python manage.py makemigrations api && python manage.py migrate && python3 manage.py loaddata data.json && gunicorn --bind ${APP_HOST}:${APP_PORT} --workers ${GUNICORN_WORKERS} statistics_storage.wsgi --env DJANGO_SETTINGS_MODULE=statistics_storage.settings"
+        container_name: statistics.storage
+        expose:
+            - "${APP_PORT}"
+        hostname: ${APP_HOST}
+        image: statistics.storage-image
+        restart: on-failure
+        network_mode: "host"
