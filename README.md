@@ -26,3 +26,4 @@ curl --location --request GET "http://127.0.0.1:8000/api/statistic/" -H "Authori
 ```
 curl --location --request POST "http://127.0.0.1:8000/api/statistic/delete_all/" -H "Authorization: Token ****"
 ```
+Задание: https://docs.google.com/document/d/1xs8PeM_7MHPD72QS1gGNOCt6eqb6COUq/
